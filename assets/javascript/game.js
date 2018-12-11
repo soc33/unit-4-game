@@ -19,7 +19,7 @@ $(document).ready(function () {
         gem3 = Math.floor(Math.random() * 10 + 2);
         gem4 = Math.floor(Math.random() * 10 + 2);
         computerNumber = Math.floor(Math.random() * 101 + 20);
-        console.log("Gem1 = " + gem1 + ", gem2 = " + gem2 + ", gem3 = " + gem3 + ", gem4 " + gem4 + ", computer =" + computerNumber);
+        console.log("Gem1 = " + gem1 + ", gem2 = " + gem2 + ", gem3 = " + gem3 + ", gem4 = " + gem4 + ", computer =" + computerNumber);
     }
     // function to set up game
     function setGame1() {
@@ -263,7 +263,7 @@ $(document).ready(function () {
     });
 
     // function to check for win or loss
-    checkForWins = function () {
+    checkForLosses = function () {
         if (characterHealth > 0) {
             if (enemyHealth <= 0) {
                 if (enemiesDefeated === 2) {
@@ -313,7 +313,7 @@ $(document).ready(function () {
             $(".currentCharacter").text(characterHealth -= enemyAttack);
             $("#instructions5").text("You attacked for " + attack + " hit points, and you took " + enemyAttack + " points of damage.");
             attack += 8;
-            checkForWins();
+            checkForLosses();
         }
     });
     $("#replay").on("click", function () {
