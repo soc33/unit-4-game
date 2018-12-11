@@ -20,8 +20,22 @@
 #instructions1, #instructions5 {
     font-weight: bolder;
 }
-#instructions3, #instructions4, #instructions5 {
+#instructions1, #instructions2, #instructions3, #instructions4, #instructions5 {
     clear: both;
+}
+#fight {
+    display: none;
+    float: right;
+    margin-right: 20%;
+    font-family: 'Bungee', cursive;
+    font-size: 40px;
+}
+#replay {
+    display: none;
+    float: right;
+    margin-right: 20%;
+    font-family: 'Charmonman', cursive;
+    font-size: 40px;
 }
 .numberBox {
     background-color: aquamarine;
@@ -70,6 +84,7 @@ body {
 }
 button {
     background-color: rgb(61, 6, 71);
+    padding: 15px;
     border: none;
     color: gainsboro;
     margin-left: 20%;
@@ -92,7 +107,6 @@ button {
     margin-bottom: 15px;
 }
 .choices {
-    /* padding: 15px; */
     border: 2px solid green;
     background-color: white;
     float: left;
@@ -102,7 +116,6 @@ button {
     text-align: center;
     font-size: 15px;
     width: 154px;
-    /* color: white; */
 }
 .bottom{
     position: relative;
@@ -111,10 +124,6 @@ button {
     font-size: 15px;
     width: 154px;
 }
-/* #one #two #three #four { */
-    /* position: relative; */
-/* } */
-
 #forInstructor {
     display: block;
 }

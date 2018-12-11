@@ -13,7 +13,7 @@
     <!-- Linking my favicon -->
     <link rel='icon' href='assets/images/kitykatGameImageSmall.png' type='image/x-icon' />
     <!-- Linking google fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Lobster" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Gamja+Flower|Lobster|Bungee|Charmonman" rel="stylesheet">
     <!-- linking jQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
@@ -26,33 +26,35 @@
     <br>
     <div id=characterChoices>
         <div id="one" class="choices">
-            <p class="top">Frodo</p>
-            <p class="bottom" id="frodoHealth">120</p>
+            <p class="top" id="frodo">Frodo</p>
+            <p class="bottom" id="frodoHealth">100</p>
             <img id="ichi" class="characters" src="assets/images/frodo.jpg" alt="frodo" height="120" width="120">
         </div>
         <div id="two" class="choices">
-            <p class="top">Sam</p>
-            <p class="bottom" id="samHealth">140</p>
+            <p class="top" id="sam">Sam</p>
+            <p class="bottom" id="samHealth">120</p>
             <img id="ni" class="characters" src="assets/images/sam.jpg" alt="sam" height="120" width="120">
         </div>
         <div id="three" class="choices">
-            <p class="top">Legolas</p>
+            <p class="top" id="legolas">Legolas</p>
             <p class="bottom" id="legolasHealth">150</p>
             <img id="san" class="characters" src="assets/images/legolas.jpg" alt="legolas" height="120" width="120">
         </div>
         <div id="four" class="choices">
-            <p class="top">Gimli</p>
-            <p class="bottom" id="gimliHealth">160</p>
+            <p class="top" id="gimli">Gimli</p>
+            <p class="bottom" id="gimliHealth">180</p>
             <img id="yon" class="characters" src="assets/images/gimli.jpg" alt="gimli" height="120" width="120">
         </div>
     </div>
+    <button id="fight"></button>
+    <button id="replay"></button>
     <div id="instructions">
-        <p id="instructions1">Instructions on how to play the game should be here!</p> <br><br>
-        <p id="instructions2">Instructions on how to play the game should be here!</p><br><br>
+        <p id="instructions1">Instructions on how to play the game should be here!</p> <br>
         <div id="enemies"><br></div>
-        <p id="instructions3">Instructions on how to play the game should be here!</p><br><br>
-        <p id="instructions4">Instructions on how to play the game should be here!</p><br><br>
+        <p id="instructions2">Instructions on how to play the game should be here!</p><br>
+        <p id="instructions3">Instructions on how to play the game should be here!</p><br>
         <div id="currentFighter"><br></div>
+        <p id="instructions4">Instructions on how to play the game should be here!</p><br>
         <p id="instructions5">Instructions on how to play the game should be here!</p><br><br>
     </div>
     <div class="numberBox">

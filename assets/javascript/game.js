@@ -7,6 +7,10 @@ $(document).ready(function () {
     var gem3 = 0;
     var gem4 = 0;
     var score = 0;
+    var attack = 8;
+    var enemyAttack = 0;
+    var characterHealth = 0;
+    var enemiesDefeated = 0;
 
     // function to get the random numbers to play the game
     function randomNum() {
@@ -44,12 +48,15 @@ $(document).ready(function () {
     };
     function setGame2() {
         $("#instructions1").text("Character Choice");
-        $("#instructions2").text("(Pick a character from the four above to play as)");
-        $("#instructions3").text("Enemies available to attack");
-        $("#instructions4").text("Fight section");
-        $("#instructions5").text("Defender");
+        $("#instructions2").text("Enemies available to attack");
+        $("#instructions3").text("Fight section");
+        $("#instructions4").text("Defender");
+        $("#instructions5").text("");
         $("#title").text("Lord Of the Rings RPG");
         $("body").css("background-image", "url(assets/images/lotr.jpg)");
+        $("body").css("background-size", "cover");
+        $("html").css("height", "100%");
+        $("body").css("background-repeat", "no-repeat");
         $("#gems").css("display", "none");
         $("#scoreTotalText").css("display", "none");
         $("#score").css("display", "none");
@@ -61,6 +68,9 @@ $(document).ready(function () {
         $("#characterChoices").css("display", "block");
         $("#enemies").css("display", "block");
         $("#currentFighter").css("display", "block");
+        $("#fight").css("display", "block");
+        $("#fight").text("Attack!");
+
     };
 
     // start game
@@ -137,6 +147,7 @@ $(document).ready(function () {
         }
     });
     var setCharacter = 0;
+    var setEnemy = 0;
     $("#one").on("click", function () {
         if (setCharacter === 0) {
             $("#one").css("background-color", "green");
@@ -149,11 +160,20 @@ $(document).ready(function () {
             $("#two").appendTo($("#enemies"));
             $("#three").appendTo($("#enemies"));
             $("#four").appendTo($("#enemies"));
-            $("#instructions2").text("");
+            $("#frodoHealth").addClass("currentCharacter");
+            characterHealth = 100;
             setCharacter = 1;
-        } else if (setCharacter === 1) {
-            
-        } else if (setCharacter > 0 && setCharacter <5) {
+        } else {
+            if (setEnemy === 0) {
+                $("#one").css("background-color", "black");
+                $("#one").appendTo("#currentFighter");
+                $("#frodoHealth").css("color", "white");
+                $("#frodo").css("color", "white");
+                $("#frodoHealth").addClass("currentEnemy");
+                enemyHealth = 100;
+                enemyAttack = 5;
+                setEnemy = 1;
+            }
 
         }
     });
@@ -169,8 +189,20 @@ $(document).ready(function () {
             $("#one").appendTo($("#enemies"));
             $("#three").appendTo($("#enemies"));
             $("#four").appendTo($("#enemies"));
-            $("#instructions2").text("");
+            $("#samHealth").addClass("currentCharacter");
+            characterHealth = 120;
             setCharacter = 2;
+        } else {
+            if (setEnemy === 0) {
+                $("#two").css("background-color", "black");
+                $("#two").appendTo("#currentFighter");
+                $("#samHealth").css("color", "white");
+                $("#sam").css("color", "white");
+                $("#samHealth").addClass("currentEnemy");
+                enemyHealth = 120;
+                enemyAttack = 15;
+                setEnemy = 2;
+            }
         }
     });
     $("#three").on("click", function () {
@@ -185,8 +217,20 @@ $(document).ready(function () {
             $("#two").appendTo($("#enemies"));
             $("#one").appendTo($("#enemies"));
             $("#four").appendTo($("#enemies"));
-            $("#instructions2").text("");
+            $("#legolasHealth").addClass("currentCharacter");
+            characterHealth = 150;
             setCharacter = 3;
+        } else {
+            if (setEnemy === 0) {
+                $("#three").css("background-color", "black");
+                $("#three").appendTo("#currentFighter");
+                $("#legolasHealth").css("color", "white");
+                $("#legolas").css("color", "white");
+                $("#legolasHealth").addClass("currentEnemy");
+                enemyHealth = 150;
+                enemyAttack = 20;
+                setEnemy = 3;
+            }
         }
     });
     $("#four").on("click", function () {
@@ -201,10 +245,123 @@ $(document).ready(function () {
             $("#two").appendTo($("#enemies"));
             $("#three").appendTo($("#enemies"));
             $("#one").appendTo($("#enemies"));
-            $("#instructions2").text("");
+            $("#gimliHealth").addClass("currentCharacter");
+            characterHealth = 180;
             setCharacter = 4;
+        } else {
+            if (setEnemy === 0) {
+                $("#four").css("background-color", "black");
+                $("#four").appendTo("#currentFighter");
+                $("#gimliHealth").css("color", "white");
+                $("#gimli").css("color", "white");
+                $("#gimliHealth").addClass("currentEnemy");
+                enemyHealth = 180;
+                enemyAttack = 25;
+                setEnemy = 4;
+            }
         }
     });
 
+    // function to check for win or loss
+    checkForWins = function () {
+        if (characterHealth > 0) {
+            if (enemyHealth <= 0) {
+                if (enemiesDefeated === 2) {
+                    $("#instructions5").text("You defeated ALL the enemies! Click replay to play again!");
+                    $("#replay").toggle();
+                    $("#replay").text("replay");
+                    $("#currentFighter").css("display", "none");
+                } else {
+                    $("#instructions5").text("You defeated an enemy. You can pick a new enemy to fight!");
+                    switch (setEnemy) {
+                        case 1:
+                            $("#one").css("display", "none");
+                            setEnemy = 0;
+                            enemiesDefeated += 1;
+                            break;
+                        case 2:
+                            $("#two").css("display", "none");
+                            setEnemy = 0;
+                            enemiesDefeated += 1;
+                            break;
+                        case 3:
+                            $("#three").css("display", "none");
+                            setEnemy = 0;
+                            enemiesDefeated += 1;
+                            break;
+                        case 4:
+                            $("#four").css("display", "none");
+                            setEnemy = 0;
+                            enemiesDefeated += 1;
+                            break;
+                    }
+                }
+            }
+        } else {
+            $("#instructions5").text("You lost all your health! You lose! Hit replay to play again.");
+            $("#replay").toggle();
+            $("#replay").text("replay");
+            $("#fight").css("display", "none");
+        }
+    };
+
+    $("#fight").on("click", function () {
+        if (setEnemy === 0) {
+            $("#instructions5").text("There is no enemy to attack yet...");
+        } else {
+            $(".currentEnemy").text(enemyHealth -= attack);
+            $(".currentCharacter").text(characterHealth -= enemyAttack);
+            $("#instructions5").text("You attacked for " + attack + " hit points, and you took " + enemyAttack + " points of damage.");
+            attack += 8;
+            checkForWins();
+        }
+    });
+    $("#replay").on("click", function () {
+        setGame2();
+        attack = 8;
+        enemyAttack = 0;
+        characterHealth = 0;
+        setCharacter = 0;
+        setEnemy = 0;
+        enemiesDefeated = 0;
+        $("#one").appendTo($("#characterChoices"));
+        $("#two").appendTo($("#characterChoices"));
+        $("#three").appendTo($("#characterChoices"));
+        $("#four").appendTo($("#characterChoices"));
+        $("#one").css("display", "block");
+        $("#two").css("display", "block");
+        $("#three").css("display", "block");
+        $("#four").css("display", "block");
+        $("#frodoHealth").text("100");
+        $("#samHealth").text("120");
+        $("#legolasHealth").text("150");
+        $("#gimliHealth").text("180");
+        $("#instructions5").text("");
+        $("#one").css("background-color", "white");
+        $("#two").css("background-color", "white");
+        $("#three").css("background-color", "white");
+        $("#four").css("background-color", "white");
+        $("#one").css("border", "green solid 2px");
+        $("#two").css("border", "green solid 2px");
+        $("#three").css("border", "green solid 2px");
+        $("#four").css("border", "green solid 2px");
+        $("#frodoHealth").css("color", "black");
+        $("#samHealth").css("color", "black");
+        $("#legolasHealth").css("color", "black");
+        $("#gimliHealth").css("color", "black");
+        $("#frodo").css("color", "black");
+        $("#sam").css("color", "black");
+        $("#legolas").css("color", "black");
+        $("#gimli").css("color", "black");
+        $("#frodoHealth").removeClass("currentEnemy");
+        $("#samHealth").removeClass("currentEnemy");
+        $("#legolasHealth").removeClass("currentEnemy");
+        $("#gimliHealth").removeClass("currentEnemy");
+        $("#frodoHealth").removeClass("currentCharacter");
+        $("#samHealth").removeClass("currentCharacter");
+        $("#legolasHealth").removeClass("currentCharacter");
+        $("#gimliHealth").removeClass("currentCharacter");
+        $("#replay").toggle();
+    });
 
 });
