@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    var wins = 4;
+    var wins = 0;
     var losses = 0;
     var computerNumber = 0;
     var gem1 = 0;
