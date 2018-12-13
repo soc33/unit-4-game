@@ -19,7 +19,7 @@ $(document).ready(function () {
         gem3 = Math.floor(Math.random() * 10 + 2);
         gem4 = Math.floor(Math.random() * 10 + 2);
         computerNumber = Math.floor(Math.random() * 101 + 20);
-        console.log("Gem1 = " + gem1 + ", gem2 = " + gem2 + ", gem3 = " + gem3 + ", gem4 = " + gem4 + ", computer =" + computerNumber);
+        // console.log("Gem1 = " + gem1 + ", gem2 = " + gem2 + ", gem3 = " + gem3 + ", gem4 = " + gem4 + ", computer =" + computerNumber);
     }
     // function to set up game
     function setGame1() {
