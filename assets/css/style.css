@@ -46,6 +46,7 @@
     margin-top: 10px;
     display: block;
     float: left;
+    font-family: 'Dokdo', cursive;
 }
 #winLossCounter {
     background-color: bisque;
@@ -63,8 +64,11 @@
     margin-left: 20%;
     margin-top: 10px;
 }
+img:hover {
+    cursor: -webkit-grabbing;
+}
 body {
-    background-image: url("../images/mine.jpg");
+    background-image: url("../images/Peachs_castle.png");
     background-size: cover;
     font-family: 'Gamja Flower', cursive;
     font-size: 30px;

@@ -23,17 +23,19 @@ $(document).ready(function () {
     }
     // function to set up game
     function setGame1() {
-        $("#instructions1").text("Welcome weary traveler to the mine!");
-        $("#instructions2").text("I have long awaited your help in my mines. You see I am old and weak so I can no longer do my own mining... BUT! I will give you something in return!");
-        $("#instructions3").text("Whenever you can get me the right amount of gems that I ask for, you will get to keep one of my precious gems for yourself! See? aren't I so generous!?");
-        $("#instructions4").text("Click on the gems to start collecting.");
-        $("#instructions5").text("Now get to work!");
-        $("#title").text("Gem Collector");
+        $("#instructions1").text("I NEED YOUR HELP!");
+        $("#instructions2").text("Mario is away on another journey and left me to gaurd the princess by myself, and well... there was a ghost so I had to ... you know ... I uh... uh... ANYWAYS the ghost is gone but so is the princess!!");
+        $("#instructions3").text("Thankfully this time it wasn't Bowser but it was his son, Bowser Jr. which is good because otherwise we would have REAL problems on our hands... But anyways, Bowser Jr. sent a ransom note and just wants money for the princess since he still thinks girls are gross. He keeps sending random ransom notes with very random amounts of coins. But I think we can do this if we just beat up enough of his lackies I'm sure we can collect the momey he wants before Mario gets back!");
+        $("#instructions4").text("You'll help me right? I'm sure if we fulfill at least 5 of his ransom notes we will be able to get the princess back!");
+        $("#instructions5").text("Please help me! Your friend, Luigi");
+        $("#title").text("It's a me! Luigi!");
         $("#score").text(score);
         $("#winCounter").text("Wins: " + wins);
         $("#lossCounter").text("Losses: " + losses);
-        $("#random-number").text("Number of gems to get is: " + computerNumber);
-        $("body").css('background-image', "url(assets/images/mine.jpg)");
+        $("#random-number").text("i nEed "  + computerNumber + " monies and iLl give yu back the pwincess.. i pwomise, LuV, boWser jR");
+        $("body").css('background-image', "url(assets/images/Peachs_castle.png)");
+        $("body").css("background-size", "cover");
+        $("body").css("background-repeat", "no-repeat");
         $("#gems").css("display", "block");
         $("#scoreTotalText").css("display", "block");
         $("#score").css("display", "block");
@@ -45,6 +47,7 @@ $(document).ready(function () {
         $("#characterChoices").css("display", "none");
         $("#enemies").css("display", "none");
         $("#currentFighter").css("display", "none");
+        $("#fight").css("display", "none");
     };
     function setGame2() {
         $("#instructions1").text("Character Choice");
@@ -55,7 +58,6 @@ $(document).ready(function () {
         $("#title").text("Lord Of the Rings RPG");
         $("body").css("background-image", "url(assets/images/lotr.jpg)");
         $("body").css("background-size", "cover");
-        $("html").css("height", "100%");
         $("body").css("background-repeat", "no-repeat");
         $("#gems").css("display", "none");
         $("#scoreTotalText").css("display", "none");
@@ -106,14 +108,19 @@ $(document).ready(function () {
             $("#winCounter").text("Wins: " + wins);
             resetGame();
             if (wins === 5) {
+                $("#random-number").text("WHHHHAATTTT!!???? How did you get all thoSe Monies!?? fIne yu can haS the Pwincess, sheS gRoss anyways...");
+                $("#instructions").text("You did it! I'm saved!! I mean WE'RE saved!! Now mario never has to find out that I lost the princess! Wait.. where is she though?? ");
                 $("#switchGames").text("Shh.. Click here for a better game!");
                 $("#switchGames").toggle();
+            } else if (wins < 5) {
+                $("#random-number").text("BWah HA hA You thought I'd give you the pWincess THAT fast? I neeD " + computerNumber + " mOre monies!");
             }
         } else if (score > computerNumber) {
             losses++;
+            resetGame();
             $("#winLossText").text("You lost!");
             $("#lossCounter").text("Losses: " + losses);
-            resetGame();
+            $("#random-number").text("wHat is thAt? iF yu caN't geT me wAt i want Yu won't Get tHE pwincess. gET me " + computerNumber + " monIes!");
         }
     };
     //function to reset game
