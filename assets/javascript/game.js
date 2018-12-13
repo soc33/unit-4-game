@@ -7,10 +7,6 @@ $(document).ready(function () {
     var gem3 = 0;
     var gem4 = 0;
     var score = 0;
-    var attack = 8;
-    var enemyAttack = 0;
-    var characterHealth = 0;
-    var enemiesDefeated = 0;
 
     // function to get the random numbers to play the game
     function randomNum() {
@@ -32,7 +28,7 @@ $(document).ready(function () {
         $("#score").text(score);
         $("#winCounter").text("Wins: " + wins);
         $("#lossCounter").text("Losses: " + losses);
-        $("#random-number").text("i nEed "  + computerNumber + " monies and iLl give yu back the pwincess.. i pwomise, LuV, boWser jR");
+        $("#random-number").text("i nEed " + computerNumber + " monies and iLl give yu back the pwincess.. i pwomise, LuV, boWser jR");
         $("body").css('background-image', "url(assets/images/Peachs_castle.png)");
         $("body").css("background-size", "cover");
         $("body").css("background-repeat", "no-repeat");
@@ -48,31 +44,6 @@ $(document).ready(function () {
         $("#enemies").css("display", "none");
         $("#currentFighter").css("display", "none");
         $("#fight").css("display", "none");
-    };
-    function setGame2() {
-        $("#instructions1").text("Character Choice");
-        $("#instructions2").text("Enemies available to attack");
-        $("#instructions3").text("Fight section");
-        $("#instructions4").text("Defender");
-        $("#instructions5").text("");
-        $("#title").text("Lord Of the Rings RPG");
-        $("body").css("background-image", "url(assets/images/lotr.jpg)");
-        $("body").css("background-size", "cover");
-        $("body").css("background-repeat", "no-repeat");
-        $("#gems").css("display", "none");
-        $("#scoreTotalText").css("display", "none");
-        $("#score").css("display", "none");
-        $(".numberBox").css("display", "none");
-        $("#winLossCounter").css("display", "none");
-        $("#switchGames").text("This game is boring, back to original Game please!");
-        $("#instructions").css("background-color", "transparent");
-        $("#title").css("background-color", "pink");
-        $("#characterChoices").css("display", "block");
-        $("#enemies").css("display", "block");
-        $("#currentFighter").css("display", "block");
-        $("#fight").css("display", "block");
-        $("#fight").text("Attack!");
-
     };
 
     // start game
@@ -100,6 +71,7 @@ $(document).ready(function () {
         $("#score").text(score);
         checkForWins();
     });
+
     //function to see if you win
     function checkForWins() {
         if (score === computerNumber) {
@@ -123,6 +95,7 @@ $(document).ready(function () {
             $("#random-number").text("wHat is thAt? iF yu caN't geT me wAt i want Yu won't Get tHE pwincess. gET me " + computerNumber + " monIes!");
         }
     };
+
     //function to reset game
     function resetGame() {
         randomNum();
@@ -153,8 +126,42 @@ $(document).ready(function () {
             secondGame = false;
         }
     });
+
+    // variables for second game
+    var attack = 8;
+    var enemyAttack = 0;
+    var characterHealth = 0;
+    var enemiesDefeated = 0;
     var setCharacter = 0;
     var setEnemy = 0;
+
+    // function to set up game 2
+    function setGame2() {
+        $("#instructions1").text("Character Choice");
+        $("#instructions2").text("Enemies available to attack");
+        $("#instructions3").text("Fight section");
+        $("#instructions4").text("Defender");
+        $("#instructions5").text("");
+        $("#title").text("Lord Of the Rings RPG");
+        $("body").css("background-image", "url(assets/images/lotr.jpg)");
+        $("body").css("background-size", "cover");
+        $("body").css("background-repeat", "no-repeat");
+        $("#gems").css("display", "none");
+        $("#scoreTotalText").css("display", "none");
+        $("#score").css("display", "none");
+        $(".numberBox").css("display", "none");
+        $("#winLossCounter").css("display", "none");
+        $("#switchGames").text("This game is boring, back to original Game please!");
+        $("#instructions").css("background-color", "transparent");
+        $("#title").css("background-color", "pink");
+        $("#characterChoices").css("display", "block");
+        $("#enemies").css("display", "block");
+        $("#currentFighter").css("display", "block");
+        $("#fight").css("display", "block");
+        $("#fight").text("Attack!");
+    };
+
+    // functions for second game for what happens on click of a character's picture
     $("#one").on("click", function () {
         if (setCharacter === 0) {
             $("#one").css("background-color", "green");
@@ -311,7 +318,8 @@ $(document).ready(function () {
             $("#fight").css("display", "none");
         }
     };
-
+    
+    // function for attacking
     $("#fight").on("click", function () {
         if (setEnemy === 0) {
             $("#instructions5").text("There is no enemy to attack yet...");
@@ -323,6 +331,8 @@ $(document).ready(function () {
             checkForLosses();
         }
     });
+
+    //function for resetting the game to play again
     $("#replay").on("click", function () {
         setGame2();
         attack = 8;
@@ -370,5 +380,4 @@ $(document).ready(function () {
         $("#gimliHealth").removeClass("currentCharacter");
         $("#replay").toggle();
     });
-
 });
