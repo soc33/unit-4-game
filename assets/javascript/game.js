@@ -44,6 +44,7 @@ $(document).ready(function () {
         $("#enemies").css("display", "none");
         $("#currentFighter").css("display", "none");
         $("#fight").css("display", "none");
+        $("#replay").css("display", "none");
     };
 
     // start game
@@ -81,7 +82,11 @@ $(document).ready(function () {
             resetGame();
             if (wins === 5) {
                 $("#random-number").text("WHHHHAATTTT!!???? How did you get all thoSe Monies!?? fIne yu can haS the Pwincess, sheS gRoss anyways...");
-                $("#instructions").text("You did it! I'm saved!! I mean WE'RE saved!! Now mario never has to find out that I lost the princess! Wait.. where is she though?? ");
+                $("#instructions3").text("You did it! I'm saved!! I mean WE'RE saved!! Now mario never has to find out that I lost the princess! Wait.. where is she though?? ");
+                $("#instructions1").text("");
+                $("#instructions2").text("");
+                $("#instructions4").text("");
+                $("#instructions5").text("");
                 $("#switchGames").text("Shh.. Click here for a better game!");
                 $("#switchGames").toggle();
             } else if (wins < 5) {
@@ -282,7 +287,7 @@ $(document).ready(function () {
             if (enemyHealth <= 0) {
                 if (enemiesDefeated === 2) {
                     $("#instructions5").text("You defeated ALL the enemies! Click replay to play again!");
-                    $("#replay").toggle();
+                    $("#replay").css("display", "block");
                     $("#replay").text("replay");
                     $("#currentFighter").css("display", "none");
                 } else {
@@ -313,7 +318,7 @@ $(document).ready(function () {
             }
         } else {
             $("#instructions5").text("You lost all your health! You lose! Hit replay to play again.");
-            $("#replay").toggle();
+            $("#replay").css("display", "block");
             $("#replay").text("replay");
             $("#fight").css("display", "none");
         }
@@ -378,6 +383,6 @@ $(document).ready(function () {
         $("#samHealth").removeClass("currentCharacter");
         $("#legolasHealth").removeClass("currentCharacter");
         $("#gimliHealth").removeClass("currentCharacter");
-        $("#replay").toggle();
+        $("#replay").css("display", "none");
     });
 });
